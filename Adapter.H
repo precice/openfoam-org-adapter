@@ -294,6 +294,10 @@ private:
     //- Configure the checkpointing
     void setupCheckpointing();
 
+    //- Remove checkpointed fields which are not used by OpenFOAM anymore
+    void pruneCheckpointedFields();
+
+
     //- Make a copy of the runTime object
     void storeCheckpointTime();
 
