@@ -64,7 +64,7 @@ It is based on [previous work](https://github.com/ludcila/CHT-preCICE) by Lucia 
 
 The fluid-structure interaction module was developed in close collaboration between Gerasimos Chourdakis and Derek Risseeuw (TU Delft), in the context of the [master's thesis of the latter](http://resolver.tudelft.nl/uuid:70beddde-e870-4c62-9a2f-8758b4e49123) [4]. We would also like to thank David Schneider (Univ. Siegen / TUM) and Maximilian Müller (TU Braunschweig) for sharing the code and experience of their similar previous work.
 
-The fluid-fluid coupling module was added by Gerasimos Chourdakis, in the context of his dissertation. [#67](https://github.com/precice/openfoam-adapter/pull/67)
+The fluid-fluid coupling module was added by Gerasimos Chourdakis, in the context of his dissertation. [#67](https://github.com/precice/openfoam-adapter/pull/67). Further contributions in this direction by Markus Mühlhäußer ([master's thesis](https://mediatum.ub.tum.de/node?id=1696254&change_language=en) [5], [related publication](https://mediatum.ub.tum.de/node?id=1732401&change_language=en) [6]).
 
 The adapter is [easily extensible](https://precice.org/adapter-openfoam-extend.html).
 
@@ -77,6 +77,10 @@ The adapter is [easily extensible](https://precice.org/adapter-openfoam-extend.h
 [3] Lucia Cheung Yau. Conjugate heat transfer with the multiphysics coupling library preCICE. Master’s thesis, Department of Informatics, Technical University of Munich, 2016.
 
 [4] Derek Risseeuw. Fluid Structure Interaction Modelling of Flapping Wings. Master's thesis, Faculty of Aerospace Engineering, Delft University of Technology, 2019.
+
+[5] Markus Mühlhäußer. Partitioned flow simulations with preCICE and OpenFOAM. Master's thesis, School of Computation, Information and Technology, Technical University of Munich, 2022.
+
+[6] Mühlhäußer, M., Chourdakis, G., & Uekermann, B. (2023). Partitioned flow simulations with preCICE and OpenFOAM. Proceedings of the ECCOMAS Coupled Problems 2023. [DOI: 10.23967/c.coupled.2023.014](https://doi.org/10.23967/c.coupled.2023.014)
 
 {% disclaimer %}
 This offering is not approved or endorsed by OpenCFD Limited, producer and distributor of the OpenFOAM software via www.openfoam.com, and owner of the OPENFOAM®  and OpenCFD®  trade marks.
