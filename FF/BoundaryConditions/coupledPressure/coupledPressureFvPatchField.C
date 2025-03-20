@@ -24,8 +24,8 @@ Foam::coupledPressureFvPatchField::coupledPressureFvPatchField(
 : fixedFluxExtrapolatedPressureFvPatchScalarField(p, iF, dict),
   refValue_("refValue", dict, p.size()),
   valueFraction_(p.size(), Zero),
-  phiName_(dict.getOrDefault<word>("phi", "phi")),
-  uName_(dict.getOrDefault<word>("U", "U"))
+  phiName_(dict.lookupOrDefault<word>("phi", "phi")),
+  uName_(dict.lookupOrDefault<word>("U", "U"))
 {
     if (dict.found("refGradient"))
     {

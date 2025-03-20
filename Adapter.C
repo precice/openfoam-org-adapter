@@ -39,16 +39,16 @@ bool preciceAdapter::Adapter::configFileRead()
                 IOobject::NO_WRITE));
 
         // Read and display the preCICE configuration file name
-        preciceConfigFilename_ = preciceDict.get<fileName>("preciceConfig");
+        preciceConfigFilename_ = static_cast<fileName>(preciceDict.lookup("preciceConfig"));
         DEBUG(adapterInfo("  precice-config-file : " + preciceConfigFilename_));
 
         // Read and display the participant name
-        participantName_ = preciceDict.get<word>("participant");
+        participantName_ = static_cast<fileName>(preciceDict.lookup("participant"));
         DEBUG(adapterInfo("  participant name    : " + participantName_));
 
         // Read and display the list of modules
         DEBUG(adapterInfo("  modules requested   : "));
-        auto modules_ = preciceDict.get<wordList>("modules");
+        auto modules_ = static_cast<wordList>(preciceDict.lookup("modules"));
         for (const auto& module : modules_)
         {
             DEBUG(adapterInfo("  - " + module + "\n"));
@@ -73,7 +73,7 @@ bool preciceAdapter::Adapter::configFileRead()
         // Every interface is a subdictionary of "interfaces",
         // each with an arbitrary name. Read all of them and create
         // a list (here: pointer) of dictionaries.
-        const auto* interfaceDictPtr = preciceDict.findDict("interfaces");
+        const auto* interfaceDictPtr = preciceDict.subDictPtr("interfaces");
         DEBUG(adapterInfo("  interfaces : "));
 
         // Check if we found any interfaces
@@ -92,7 +92,7 @@ bool preciceAdapter::Adapter::configFileRead()
                     const dictionary& interfaceDict = interfaceDictEntry.dict();
                     struct InterfaceConfig interfaceConfig;
 
-                    interfaceConfig.meshName = interfaceDict.get<word>("mesh");
+                    interfaceConfig.meshName = static_cast<word>(interfaceDict.lookup("mesh"));
                     DEBUG(adapterInfo("  - mesh         : " + interfaceConfig.meshName));
 
                     // By default, assume "faceCenters" as locationsType
@@ -113,7 +113,7 @@ bool preciceAdapter::Adapter::configFileRead()
                     DEBUG(adapterInfo("    connectivity : " + std::to_string(interfaceConfig.meshConnectivity)));
 
                     DEBUG(adapterInfo("    patches      : "));
-                    auto patches = interfaceDict.get<wordList>("patches");
+                    auto patches = static_cast<wordList>(interfaceDict.lookup("patches"));
                     for (auto patch : patches)
                     {
                         interfaceConfig.patchNames.push_back(patch);
