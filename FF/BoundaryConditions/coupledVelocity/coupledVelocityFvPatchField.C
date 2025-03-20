@@ -162,9 +162,9 @@ Foam::coupledVelocityFvPatchField::gradientBoundaryCoeffs() const
 void Foam::coupledVelocityFvPatchField::write(Ostream& os) const
 {
     fvPatchField<vector>::write(os);
-    this->writeEntry("value", os);
-    this->valueFraction().writeEntry("valueFraction", os);
-    this->refValue().writeEntry("refValue", os);
+    writeEntry(os, "value", *this);
+    writeEntry(os, "valueFraction", this->valueFraction());
+    writeEntry(os, "refValue", this->refValue());
 }
 
 
