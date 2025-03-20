@@ -899,9 +899,9 @@ void preciceAdapter::Adapter::setupCheckpointing()
 #undef doLocalCode
 #define doLocalCode(GeomFieldType)                                           \
     /* Checkpoint registered GeomFieldType objects */                        \
-    for (const word& obj : mesh_.sortedNames<GeomFieldType>())               \
+    for (const word& obj : mesh_.lookupClass<GeomFieldType>().sortedToc())               \
     {                                                                        \
-        addCheckpointField(mesh_.thisDb().getObjectPtr<GeomFieldType>(obj)); \
+        addCheckpointField(&(const_cast<GeomFieldType&>(mesh_.thisDb().lookupObject<GeomFieldType>(obj)))); \
         DEBUG(adapterInfo("Checkpoint " + obj + " : " #GeomFieldType));      \
     }
 
@@ -941,7 +941,7 @@ void preciceAdapter::Adapter::pruneCheckpointedFields()
     toRemoveIndices.clear();                                                                                                                  \
     index = 0;                                                                                                                                \
     /* Iterate through fields in OpenFOAM registry */                                                                                         \
-    for (const word& fieldName : mesh_.sortedNames<GeomFieldType>())                                                                          \
+    for (const word& fieldName : mesh_.lookupClass<GeomFieldType>().sortedToc())                                                                          \
     {                                                                                                                                         \
         regFields.push_back(fieldName);                                                                                                       \
     }                                                                                                                                         \
