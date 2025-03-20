@@ -59,7 +59,6 @@ SourceFiles
 
 // OpenFOAM header files
 #include "fvMeshFunctionObject.H"
-#include "clockValue.H"
 
 // Main adapter header file
 #include "Adapter.H"
