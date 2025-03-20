@@ -503,7 +503,7 @@ void preciceAdapter::Adapter::execute()
 }
 
 
-void preciceAdapter::Adapter::adjustTimeStep()
+void preciceAdapter::Adapter::setTimeStep()
 {
     adjustSolverTimeStepAndReadData();
 
@@ -689,7 +689,7 @@ void preciceAdapter::Adapter::adjustSolverTimeStepAndReadData()
     }
 
     // Update the solver's timestep (but don't trigger the adjustDeltaT(),
-    // which also triggers the functionObject's adjustTimeStep())
+    // which also triggers the functionObject's setTimeStep())
     // TODO: Keep this in mind if any relevant problem appears.
     const_cast<Time&>(runTime_).setDeltaT(timestepSolver_, false);
 

@@ -70,7 +70,7 @@ Foam::functionObjects::preciceAdapterFunctionObject::~preciceAdapterFunctionObje
     Info << "-------------------- preCICE adapter timers (primary rank) --------------------------" << nl;
     Info << "Total time in adapter + preCICE: " << timeInAll_.str() << " (format: day-hh:mm:ss.ms)" << nl;
     Info << "  For setting up (S):            " << timeInSetup_.str() << " (read() function)" << nl;
-    Info << "  For all iterations (I):        " << timeInExecute_.str() << " (execute() and adjustTimeStep() functions)" << nl << nl;
+    Info << "  For all iterations (I):        " << timeInExecute_.str() << " (execute() and setTimeStep() functions)" << nl << nl;
 #endif
 }
 
@@ -139,14 +139,14 @@ bool Foam::functionObjects::preciceAdapterFunctionObject::write()
     return true;
 }
 
-bool Foam::functionObjects::preciceAdapterFunctionObject::adjustTimeStep()
+bool Foam::functionObjects::preciceAdapterFunctionObject::setTimeStep()
 {
 #ifdef ADAPTER_ENABLE_TIMINGS
     clockValue clock;
     clock.update();
 #endif
 
-    adapter_.adjustTimeStep();
+    adapter_.setTimeStep();
 
 #ifdef ADAPTER_ENABLE_TIMINGS
     timeInAll_ += clock.elapsed();

@@ -131,7 +131,7 @@ public:
     bool write() final;
 
     //- Called at the end of Time::adjustDeltaT() if adjustTime is true
-    bool adjustTimeStep() final;
+    bool setTimeStep() final;
 
     /*
         // NOTE: If you add a new module that needs to execute methods
