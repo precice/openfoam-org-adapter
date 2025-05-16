@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <map>
 #include "fvCFD.H"
 #include "CouplingDataUser.H"
 #include <precice/precice.hpp>
